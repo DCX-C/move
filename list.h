@@ -5,7 +5,7 @@
 #include "log.h"
 
 
-struct number      //³ÉÔ±½á¹¹Ìå
+struct number      //æˆå‘˜ç»“æ„ä½“
 {
 int position;
 char name[15];
@@ -18,7 +18,7 @@ struct number *next;
 
 typedef struct number * node;
 
-//¹¹½¨Ò»¸ö³ÉÔ±Á´±í,·µ»ØÁ´±íÍ·;
+//æ„å»ºä¸€ä¸ªæˆå‘˜é“¾è¡¨,è¿”å›é“¾è¡¨å¤´;
 node initial(int position,char name[],char phone[],char apartment[],char code[],char id[]){
 
 node a = malloc(sizeof(struct number));
@@ -34,7 +34,7 @@ a->next = NULL;
 return a;
 }
 
-//²é¿´³ÉÔ±ÊıÁ¿
+//æŸ¥çœ‹æˆå‘˜æ•°é‡
 int check(node head)
 {
 
@@ -51,7 +51,7 @@ return i;
 }
 
 
-//Æ¥Åä³ÉÔ±Ñ§ºÅ£¬·µ»Ø³ÉÔ±Ö¸Õë
+//åŒ¹é…æˆå‘˜å­¦å·ï¼Œè¿”å›æˆå‘˜æŒ‡é’ˆ
 
 node match(struct number *head,char id[])
 {
@@ -72,7 +72,7 @@ node match(struct number *head,char id[])
 
 
 
-//Ôö¼Ó³ÉÔ±
+//å¢åŠ æˆå‘˜
 void addNode(node head,int position,char name[],char phone[],char apartment[],char code[],char id[])
 {
 	int n=check(head);
@@ -97,7 +97,7 @@ void newAdd(node head,int position,char name[],char phone[],char apartment[],cha
 	FILE *log = fopen("log.txt","a");
 	fputs(getTime(),log);
 	fputs(":",log);
-	fprintf(log,"Ò»Î»¹ÜÀíÔ±Ìí¼ÓÁËÒ»¸öÑ§ºÅÎª%sµÄ³ÉÔ±\n",id);
+	fprintf(log,"ä¸€ä½ç®¡ç†å‘˜æ·»åŠ äº†ä¸€ä¸ªå­¦å·ä¸º%sçš„æˆå‘˜\n",id);
 	fclose(log);
 
 
@@ -116,21 +116,21 @@ void betterAdd(node list)
 	char code[15] = {0};
 
 
-        puts("ÊäÈë¸Ã³ÉÔ±µÄÑ§ºÅ");
+        puts("è¾“å…¥è¯¥æˆå‘˜çš„å­¦å·");
         gets(id);
-        puts("ÊäÈë¸Ã³ÉÔ±µÄÃû×Ö");
+        puts("è¾“å…¥è¯¥æˆå‘˜çš„åå­—");
 	gets(name);
-	puts("ÊäÈë¸Ã³ÉÔ±µÄ²¿ÃÅ");
+	puts("è¾“å…¥è¯¥æˆå‘˜çš„éƒ¨é—¨");
         gets(apartment);
-        puts("ÊäÈë¸Ã³ÉÔ±µÄÃÜÂë");
+        puts("è¾“å…¥è¯¥æˆå‘˜çš„å¯†ç ");
 	gets(code);
-	puts("ÊäÈë¸Ã³ÉÔ±µÄµç»°");
+	puts("è¾“å…¥è¯¥æˆå‘˜çš„ç”µè¯");
         gets(phone);
-        puts("ÊäÈë¸Ã³ÉÔ±µÄÖ°Î»");
+        puts("è¾“å…¥è¯¥æˆå‘˜çš„èŒä½");
 	scanf("%d",&position);
         getchar();
         newAdd(list,position,name,phone,apartment,code,id);
-        printf("³É¹¦Ìí¼Ó\n");
+        printf("æˆåŠŸæ·»åŠ \n");
 
 }
 void qBetterAdd(node list)
@@ -138,16 +138,16 @@ void qBetterAdd(node list)
 
 	char id[15] = {0};
 
-        puts("ÊäÈë¸Ã³ÉÔ±µÄÑ§ºÅ");
+        puts("è¾“å…¥è¯¥æˆå‘˜çš„å­¦å·");
         gets(id);
 
         newAdd(list,"0","0","0","0","123456",id);
-        printf("³É¹¦Ìí¼Ó\n");
+        printf("æˆåŠŸæ·»åŠ \nå¯†ç 123456\n");
 
 }
 
 
-//É¾³ı³ÉÔ±
+//åˆ é™¤æˆå‘˜
 void deleteNode(node *head,char id[])
 {
 	int n=check(*head);
@@ -157,7 +157,7 @@ void deleteNode(node *head,char id[])
         int curptr;
 
 
-	for(int i=1;i<=n;i++)//ËÑË÷¶ÔÓ¦idÈËÔ±ÔÚµÚ¼¸¸önode
+	for(int i=1;i<=n;i++)//æœç´¢å¯¹åº”idäººå‘˜åœ¨ç¬¬å‡ ä¸ªnode
 	{
 	if(searchId(id,curren->id))
 	{
@@ -171,7 +171,7 @@ void deleteNode(node *head,char id[])
 	}
 	}
 
-	//ÈıÖÖÇé¿ö
+	//ä¸‰ç§æƒ…å†µ
 	if(curptr==1)
 	{
 	if((*head)->next==NULL)
@@ -205,36 +205,36 @@ void deleteNode(node *head,char id[])
 void betterDelete(node head)
 {
 	char a[15] = {0};
-	puts("ÊäÈë´ıÉ¾³ıµÄ³ÉÔ±Ñ§ºÅ");
+	puts("è¾“å…¥å¾…åˆ é™¤çš„æˆå‘˜å­¦å·");
 	gets(a);
 
         node exist = match(head,a);
 
         if(exist==NULL)
-	printf("ÎŞ¸Ã³ÉÔ±");
+	printf("æ— è¯¥æˆå‘˜");
 
 	else{
 	deleteNode(&head,a);
 	FILE *log = fopen("log.txt","a");
 	fputs(getTime(),log);
 	fputs(":",log);
-	fprintf(log,"Ò»Î»¹ÜÀíÔ±É¾³ıÁËÒ»¸öÑ§ºÅÎª%sµÄ³ÉÔ±\n",a);
+	fprintf(log,"ä¸€ä½ç®¡ç†å‘˜åˆ é™¤äº†ä¸€ä¸ªå­¦å·ä¸º%sçš„æˆå‘˜\n",a);
 	fclose(log);
-        printf("³É¹¦É¾³ı\n");
-	printf("µ±Ç°³ÉÔ±ÊıÁ¿%d\n",check(head));
+        printf("æˆåŠŸåˆ é™¤\n");
+	printf("å½“å‰æˆå‘˜æ•°é‡%d\n",check(head));
 	}
 
 }
 
-//ĞŞ¸Ä³ÉÔ±ÊôĞÔ
+//ä¿®æ”¹æˆå‘˜å±æ€§
 void corretNode(node head,char id[])
 {
 node curren = match(head,id);
-printf("1.ĞŞ¸ÄÖ°Î»\n");
-printf("2.ĞŞ¸Äµç»°\n");
-printf("3.ĞŞ¸Ä²¿ÃÅ\n");
-printf("4.ĞŞ¸ÄÃÜÂë\n");
-printf("5.ĞŞ¸ÄĞÕÃû\n");
+printf("1.ä¿®æ”¹èŒä½\n");
+printf("2.ä¿®æ”¹ç”µè¯\n");
+printf("3.ä¿®æ”¹éƒ¨é—¨\n");
+printf("4.ä¿®æ”¹å¯†ç \n");
+printf("5.ä¿®æ”¹å§“å\n");
 int choose;
 scanf("%d",&choose);
 
@@ -243,7 +243,7 @@ gets(nothing);
 
 if(choose==1)
 {
-	puts("ÊäÈë1Îª²¿³¤0Îª²¿Ô±");
+	puts("è¾“å…¥1ä¸ºéƒ¨é•¿0ä¸ºéƒ¨å‘˜");
 	int choosee;
 	scanf("%d",&choosee);
 	curren->position=choosee;
@@ -251,7 +251,7 @@ if(choose==1)
 }
 if(choose==2)
 {
-	puts("ÊäÈëµç»°ºÅÂë");
+	puts("è¾“å…¥ç”µè¯å·ç ");
 	char phone[15];
 	gets(phone);
 	memcpy(curren->phone,phone,15*sizeof(char));
@@ -259,7 +259,7 @@ if(choose==2)
 }
 if(choose==3)
 {
-	puts("ÊäÈë²¿ÃÅ");
+	puts("è¾“å…¥éƒ¨é—¨");
 	char apartment[15];
 	gets(apartment);
 	memcpy(curren->apartment,apartment,15*sizeof(char));
@@ -267,7 +267,7 @@ if(choose==3)
 }
 if(choose==4)
 {
-	puts("ÊäÈëÃÜÂë");
+	puts("è¾“å…¥å¯†ç ");
 	char code[15];
 	gets(code);
 	memcpy(curren->code,code,15*sizeof(char));
@@ -275,13 +275,13 @@ if(choose==4)
 }
 if(choose==5)
 {
-	puts("ÊäÈëĞÕÃû");
+	puts("è¾“å…¥å§“å");
 	char name[15];
 	gets(name);
 	memcpy(curren->name,name,15*sizeof(char));
 	cetfprint(choose,name,1,id);
 }
-puts("³É¹¦ĞŞ¸Ä!\n");
+puts("æˆåŠŸä¿®æ”¹!\n");
 
 
 }
@@ -289,10 +289,10 @@ puts("³É¹¦ĞŞ¸Ä!\n");
 void lowCorretNode(node head,char id[])
 {
 node curren = match(head,id);
-printf("1.ĞŞ¸Äµç»°\n");
-printf("2.ĞŞ¸Ä²¿ÃÅ\n");
-printf("3.ĞŞ¸ÄÃÜÂë\n");
-printf("4.ĞŞ¸ÄĞÕÃû\n");
+printf("1.ä¿®æ”¹ç”µè¯\n");
+printf("2.ä¿®æ”¹éƒ¨é—¨\n");
+printf("3.ä¿®æ”¹å¯†ç \n");
+printf("4.ä¿®æ”¹å§“å\n");
 int choose;
 scanf("%d",&choose);
 
@@ -302,7 +302,7 @@ gets(nothing);
 
 if(choose==1)
 {
-	puts("ÊäÈëµç»°ºÅÂë");
+	puts("è¾“å…¥ç”µè¯å·ç ");
 	char phone[15];
 	gets(phone);
 	memcpy(curren->phone,phone,15*sizeof(char));
@@ -310,7 +310,7 @@ if(choose==1)
 }
 if(choose==2)
 {
-	puts("ÊäÈë²¿ÃÅ");
+	puts("è¾“å…¥éƒ¨é—¨");
 	char apartment[15];
 	gets(apartment);
 	memcpy(curren->apartment,apartment,15*sizeof(char));
@@ -318,7 +318,7 @@ if(choose==2)
 }
 if(choose==3)
 {
-	puts("ÊäÈëÃÜÂë");
+	puts("è¾“å…¥å¯†ç ");
 	char code[15];
 	gets(code);
 	memcpy(curren->code,code,15*sizeof(char));
@@ -326,13 +326,13 @@ if(choose==3)
 }
 if(choose==4)
 {
-	puts("ÊäÈëĞÕÃû");
+	puts("è¾“å…¥å§“å");
 	char name[15];
 	gets(name);
 	memcpy(curren->name,name,15*sizeof(char));
 	cetfprint(choose,name,1,id);
 }
-puts("³É¹¦ĞŞ¸Ä!\n");
+puts("æˆåŠŸä¿®æ”¹!\n");
 
 
 }
@@ -340,12 +340,12 @@ puts("³É¹¦ĞŞ¸Ä!\n");
 void betterCorret(node head)
 {
 	char a[15] = {0};
-	puts("ÊäÈë´ıĞŞ¸ÄµÄ³ÉÔ±Ñ§ºÅ");
+	puts("è¾“å…¥å¾…ä¿®æ”¹çš„æˆå‘˜å­¦å·");
 	gets(a);
 
 	node exist1 = match(head,a);
 	if(exist1==NULL)
-	printf("ÎŞ¸Ã³ÉÔ±\n");
+	printf("æ— è¯¥æˆå‘˜\n");
 	else
 	corretNode(head,a);
 
@@ -354,54 +354,54 @@ void betterCorret(node head)
 
 }
 
-//²éÕÒ³ÉÔ±ĞÅÏ¢
+//æŸ¥æ‰¾æˆå‘˜ä¿¡æ¯
 void inform(char a[],node list)
 {
 
 	node thisNode = match(list,a);
 	if(thisNode)
 	{
-	printf("ĞÕÃû£º");
+	printf("å§“åï¼š");
 	puts(thisNode->name);
-	printf("²¿ÃÅ£º");
+	printf("éƒ¨é—¨ï¼š");
 	puts(thisNode->apartment);
-	printf("µç»°£º");
+	printf("ç”µè¯ï¼š");
 	puts(thisNode->phone);
 	}
 	else
-	printf("ÎŞ¸Ã³ÉÔ±");
+	printf("æ— è¯¥æˆå‘˜");
 
 }
 
 void oinform(node head)
 {
-	printf("Ñ§ºÅ£º");
+	printf("å­¦å·ï¼š");
 	puts(head->id);
-	printf("ĞÕÃû£º");
+	printf("å§“åï¼š");
 	puts(head->name);
-	printf("²¿ÃÅ£º");
+	printf("éƒ¨é—¨ï¼š");
 	puts(head->apartment);
-	printf("µç»°£º");
+	printf("ç”µè¯ï¼š");
 	puts(head->phone);
 }
 void betterGet(node head)
 {
-	puts("ÊäÈë´ı²é¿´ÈËµÄÑ§ºÅ");
+	puts("è¾“å…¥å¾…æŸ¥çœ‹äººçš„å­¦å·");
 	char a[15] = {0};
 	gets(a);
 	node q = match(head,a);
 
 	if(q)
 	{
-	printf("ĞÕÃû£º%s\n",q->name);
-	printf("Ñ§ºÅ£º%s\n",q->id);
-	printf("²¿ÃÅ£º%s\n",q->apartment);
-	printf("µç»°: %s\n",q->phone);
-	printf("ÃÜÂë£º%s\n",q->code);
+	printf("å§“åï¼š%s\n",q->name);
+	printf("å­¦å·ï¼š%s\n",q->id);
+	printf("éƒ¨é—¨ï¼š%s\n",q->apartment);
+	printf("ç”µè¯: %s\n",q->phone);
+	printf("å¯†ç ï¼š%s\n",q->code);
 	if(q->position==1)
-	printf("Ö°Î»: %s²¿³¤",q->apartment);
+	printf("èŒä½: %séƒ¨é•¿",q->apartment);
 	else
-	printf("Ö°Î»£º%s³ÉÔ±\n",q->apartment);
+	printf("èŒä½ï¼š%sæˆå‘˜\n",q->apartment);
 	}
 
 
